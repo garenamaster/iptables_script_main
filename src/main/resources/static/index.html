@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SecureGate</title>
+    <link rel="stylesheet" href="/css/app.css">
+</head>
+<body>
+<header class="header">
+    <div class="logo">
+        <span class="logo-icon">🛡</span>
+        <span class="logo-text">SecureGate</span>
+    </div>
+</header>
+
+<main class="layout">
+    <section class="panel status-panel">
+        <h2>СТАТУС СИСТЕМЫ</h2>
+        <div class="status-grid" id="status-grid">
+            <div class="status-card" id="status-firewall">
+                <div class="status-icon">✓</div>
+                <div class="status-title">Статус брандмауэра</div>
+                <div class="status-value">—</div>
+                <div class="status-reason"></div>
+            </div>
+            <div class="status-card" id="status-api">
+                <div class="status-icon">✓</div>
+                <div class="status-title">Статус API</div>
+                <div class="status-value">—</div>
+                <div class="status-reason"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="panel actions-panel">
+        <h2>БЫСТРЫЕ ДЕЙСТВИЯ</h2>
+        <div class="actions-row">
+            <button class="btn btn-danger" data-action="lockdown">Включить режим блокировки</button>
+            <button class="btn" data-action="reset">Восстановить правила по умолчанию</button>
+            <button class="btn btn-primary" data-action="baseline">Применить правила брандмауэра</button>
+            <button class="btn" data-action="open-port">Открыть порт</button>
+            <button class="btn" data-action="close-port">Закрыть порт</button>
+        </div>
+    </section>
+
+    <div class="bottom-grid">
+        <section class="panel temp-panel">
+            <h2>УПРАВЛЕНИЕ ВРЕМЕННЫМ ДОСТУПОМ</h2>
+            <form id="temp-form" class="temp-form">
+                <input type="text" id="temp-ip" placeholder="IP-адрес" required>
+                <input type="number" id="temp-port" placeholder="Порт" min="1" max="65535" required>
+                <select id="temp-ttl">
+                    <option value="30">30 минут</option>
+                    <option value="60">1 час</option>
+                    <option value="180">3 часа</option>
+                    <option value="360">6 часов</option>
+                </select>
+                <button type="submit" class="btn btn-primary">Предоставить доступ</button>
+            </form>
+            <table class="temp-table">
+                <thead>
+                <tr>
+                    <th>IP-АДРЕС</th>
+                    <th>ПОРТ</th>
+                    <th>ИСТЕКАЕТ ЧЕРЕЗ</th>
+                    <th>СТАТУС</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody id="temp-table-body"></tbody>
+            </table>
+        </section>
+
+        <aside class="side-column">
+            <section class="panel monitor-panel">
+                <h2>МОНИТОРИНГ СИСТЕМЫ</h2>
+                <div id="monitor-metrics" class="monitor-metrics"></div>
+            </section>
+            <section class="panel alerts-panel">
+                <h2>ОПОВЕЩЕНИЯ БЕЗОПАСНОСТИ</h2>
+                <div id="security-alerts" class="alerts-list"></div>
+            </section>
+        </aside>
+    </div>
+
+    <section class="panel logs-panel">
+        <h2>СИСТЕМНЫЕ ЖУРНАЛЫ</h2>
+        <div id="logs-terminal" class="logs-terminal"></div>
+    </section>
+</main>
+
+<div id="modal" class="modal hidden">
+    <div class="modal-content">
+        <h3 id="modal-title">Подтверждение</h3>
+        <p id="modal-message"></p>
+        <div id="modal-extra"></div>
+        <div class="modal-actions">
+            <button class="btn" id="modal-cancel">Отмена</button>
+            <button class="btn btn-primary" id="modal-confirm">Подтвердить</button>
+        </div>
+    </div>
+</div>
+
+<script src="/js/app.js"></script>
+</body>
+</html>
