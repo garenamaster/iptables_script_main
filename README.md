@@ -21,6 +21,18 @@ REST API для управления `iptables` на локальном серв
 - Linux с установленным `iptables` (`/usr/sbin/iptables`)
 - Для `saveRules()` нужен `iptables-save` (`/usr/sbin/iptables-save`)
 - Процесс приложения должен иметь права на управление firewall
+```bash
+sudo apt update
+
+sudo apt install -y \
+    openjdk-17-jdk \
+    python3 \
+    iptables \
+    nginx \
+    apache2-utils \
+    git \
+    curl
+```
 
 ## Запуск
 
