@@ -31,7 +31,8 @@ sudo apt install -y \
     nginx \
     apache2-utils \
     git \
-    curl
+    curl \
+    maven
 ```
 
 ## Запуск
